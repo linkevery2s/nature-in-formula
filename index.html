@@ -6,15 +6,15 @@
   <meta charset="UTF-8" name="viewport"
     content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta property="og:title" content="Math World" />
+  <meta property="og:title" content="Nature in Formula" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://math-world2s/images/ogp.png" />
-  <meta name="description" content="ここは数学の世界です。公式や証明、数の不思議さ、などなど、数学の世界を感じてもらえたら幸いです・" />
+  <meta name="description" content="このアプリは、数式の真理を探究するアプリケーションです。公式や証明、数の不思議さ、などなど、数式の世界を感じてもらえたら幸いです・" />
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Math World" />
+  <meta name="twitter:title" content="Nature in Formula" />
   <meta name="twitter:image" content="https://math-world2s/images/ogp.png" />
   <meta name="author" content="Saito Hitoshi">
-  <meta name="keywords" content="数学,math,公式,証明,数字" />
+  <meta name="keywords" content="数学,math,公式,証明" />
   <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
   <link rel="icon" href="./images/apple-touch-icon.png">
 
@@ -148,11 +148,20 @@
       border-bottom: 1px dotted #ffffff;
     }
 
-    .sns-fb {
+    .under_menu {
+      height: 50px;
+      width: 50px;
       position: fixed;
-      left: 3px;
+      left: 5px;
       bottom: 35px;
+      background: #1e50a2;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       z-index: 10;
+      cursor: pointer;
     }
 
     .pagetop {
@@ -197,6 +206,55 @@
       margin: 0;
       width: 100%;
     }
+
+    #introduction {
+      display: none;
+      height: 80%;
+      max-height: 900px;
+      left: 50%;
+      position: fixed;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 95%;
+      max-width: 600px;
+      z-index: 102;
+      background: #ffffff;
+      padding: .3em;
+      border-radius: .5em;
+    }
+
+    .overview {
+      height: 85%;
+    }
+
+    #closed-btn {
+      position: absolute;
+      right: 4px;
+      color: #ffffff;
+      background: #eb6ea5;
+      cursor: pointer;
+      text-align: center;
+      font-weight: bolder;
+      border-radius: .3em;
+      z-index: 102;
+    }
+
+    #closed-btn:hover {
+      background: #ffffff;
+      color: #eb6ea5;
+      border: 1px solid #eb6ea5;
+    }
+
+    #overlay {
+      width: 100%;
+      height: 120vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, .8);
+      display: none;
+      z-index: 101;
+    }
   </style>
 
   <link rel="manifest" href="./manifest.json">
@@ -206,16 +264,6 @@
         console.log('Service Worker Registered');
       });
     }
-  </script>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPP84V2NHB"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-MPP84V2NHB');
   </script>
 
 </head>
@@ -457,12 +505,51 @@
     </ul>
   </div>
 
-  <div class="sns-fb">
+  <!-- introduction -->
+  <div id="introduction" class="pb-5"><span id="closed-btn" class="py-2 px-3 text-xs mt-1 mr-1">閉じる</span>
+    <h3 class="text-2xl text-center mt-2"><i class=" fa-solid fa-bookmark"></i> はじめに</h3>
 
-    <div class="fb-share-button" data-href="https://math-world2s.netlify.app/" data-layout="button_count"
-      data-size="small"></div>
+    <div class="overflow-y-scroll overview mt-5 mx-3">
 
+      <h3 class="text-2xl mt-5" id="manual_h3">和算の世界へようこそ！</h3>
+
+      <img src="./images/formula.jpg" width="100%" alt="数式のイメージ画像">
+
+      <p class="mt-5">和算を楽しんで学べるアプリが誕生しました。</p>
+
+      <p class="mt-5">このアプリでは、江戸時代から伝わる日本独自の数学「和算」を手軽に学ぶことができます。</p>
+
+      <h3 class="text-2xl mt-5" id="manual_h3">アプリを開発したきっかけ</h3>
+
+      <p class="mt-5">2024年は僕のシビックテックの活動の中で、教育アプリを開発することを目標に開発していました。</p>
+
+      <p class="mt-5">学生時代、数学が得意科目だったこともあり、数学に関するアプリを作れないかと思っていました。</p>
+
+      <p class="mt-5">文献を調べていくうちに和算に出会いました。</p>
+
+      <p class="mt-5">天地明察という小説を読んだこともあり、和算に関する知識はありました。</p>
+
+      <p class="mt-5">よしっ、調べてみよう！そう、思い立ちました。</p>
+
+      <p class="mt-5">これが面白かったんです。</p>
+
+      <p class="mt-5">鶴亀算をはじめに2の平方根や円周率の計算方法などコンピュータはおろか、電卓さえ無い時代に、様々な計算手法を編み出した和算家たちのスキルにすっかり惚れ込みました！</p>
+
+      <p class="mt-5">これは、次世代に語り継いでいくべきだと思いました。</p>
+
+      <h3 class="text-2xl mt-5 mb-2" id="manual_h3">主な特徴</h3>
+
+      <p class="mt-5">和算の魅力を再発見し、数学の新たな世界に触れてみませんか？</p>
+
+      <p class="mt-5">齋藤　仁志. </p>
+    </div>
   </div>
+
+  <div class="under_menu">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+  <div id="overlay"></div>
 
   <div class="pagetop">
     <div class="pagetop_arrow"></div>
@@ -495,14 +582,28 @@
 
       });
 
+      const under_menu = document.querySelector('.under_menu');
+      const closed_button = document.querySelector("#closed-btn");
+      const overlay = document.querySelector('#overlay');
+
+      under_menu.addEventListener('click', () => {
+        $('#overlay').fadeIn();
+        $('#introduction').fadeIn();
+      });
+
+      closed_button.addEventListener("click", () => {
+        $('#overlay').fadeOut();
+        $('#introduction').fadeOut();
+      })
+
+      overlay.addEventListener("click", () => {
+        $('#overlay').fadeOut();
+        $('#introduction').fadeOut();
+      });
+
     }
 
   </script>
-
-  <!-- Facebookシェアボタン -->
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v19.0"
-    nonce="Pm3nh7PB"></script>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPP84V2NHB"></script>
@@ -513,8 +614,6 @@
 
     gtag('config', 'G-MPP84V2NHB');
   </script>
-
-
 
 </body>
 
